@@ -1,0 +1,15 @@
+Students:
+1. <Student 1 Full Name> (<Student 1 x500>)
+2. <Student 2 Full Name> (<Student 2 x500>)
+
+Brief Summary:
+<A Brief Summary about the change you make (1 Paragraph max)>
+
+Detailed Changes:
+1. <Modified File 1>: <The path of the modified file from src directory>
+	- <Detailed changes of the file>.
+	For example: In line xxx, I make a change so that the buffer will do........
+	
+2. <Modified File 2>: <Path from src>
+	- <Detailed changes of the file>.
+etc.
