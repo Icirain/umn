@@ -1,0 +1,16 @@
+Students:
+1. <Rui Zuo> (<zuoxx067>)
+2. <Shuomiao Li> (<lixx4056>)
+
+Brief Summary:
+We modifiy the file freelist.c. In this file we set an integer array timestamp to track the timestamp of each buffer.The timestamp of each buffer stored in this array could be accessed by buf_id as an index.We then scan the whole buffer pool and access the timestamp of candidate buffer whose ref_count=0. Se set the candidate buffer whose timestamp is the largest as the last and finally return the last. Everytime we return a buffer for replacement we increased the timestamp of this buffer by 1.
+ 
+Detailed Change
+1. <Modified File 1>: </postgresql-9.2.1/src/backend/storage/buffer/freelist.c>
+	in line 118:We define an integer array timestamp to store the timestamp of each buffer and an integer variavble stamp to track the timestamp of each replacement.
+	From line 125 to 134: we check whether stamp over than the limit number, if over just reset the data of timestamp. Then have a for loop to walk through the timestamp list.
+ From 145 to 146 and 207 to 208:When we retrun an buffer for replacement we increase the stamp and define the timestamp of this buffer equal to stamp.	from line 234 to 272: If use LIFO, then we decrease the trycounter in every step of loop to finish a scann until try counter=0. We set a pointer named last which is pointed to the last in buffer.Every we find a candidate buffer we printed its timestamp. if the buffer scanned now whose timestamp is larger than that of last,we set last as this buffer. When the scan finished, we retrun the last whose timestamp is the largest.If the last is NULL it means we can't get any candidate buffer to return then we print out error. If we have a last which is not NULL to return , we will lock the last pointer in case of the spinlock bug.
+ 
+	
+  
+
