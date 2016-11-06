@@ -9,14 +9,15 @@ class banker(object):
         file.close()
         i=0
         queue=list()
-        while i<len(content):
-            queue.append([content[i].strip('customer:\n'),int(content[i+1].strip('priority:\n'))])
+        while i<len(content)-1:
+            queue.append([content[i].split(':')[1].strip('\n'),int(content[i+1].strip('priority:\n'))])
             i=i+2
         self.queue=queue
+        self.make_heap(len(self.queue))
     def make_heap(self,size):
         for index in range((size-2)//2,-1,-1):
             self.Heapify(index,size)
-        print(self.queue)
+        #print(self.queue)
     def Heapify(self,index,size):
         left=2*index+1
         right=2*index+2
@@ -29,5 +30,20 @@ class banker(object):
         if largest!=index:
             self.queue[largest],self.queue[index]=self.queue[index],self.queue[largest]
             self.Heapify(largest,size)
+    def HeapSort(self):
+        queue=self.queue
+        while self.queue!=[]:
+            self.Extract_Max()
+        self.queue=queue
+    def Maximum(self):
+        print(self.queue[0][0])
+    def Extract_Max(self):
+        print(self.queue[0][0])
+        self.queue.pop(0)
+        self.make_heap(len(self.queue))
+    def Insert(self,element):
+        self.queue.append(element)
+        self.make_heap(len(self.queue))
 banker1=banker('customers_info.txt')
-banker1.make_heap(11)
+banker1.Insert(['Alan',17])
+banker1.HeapSort()
