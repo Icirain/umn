@@ -9,7 +9,6 @@ class banker(object):
         file.close()
         i=0
         queue=list()
-        print(len(content))
         while i<len(content):
             queue.append([content[i].split(':')[1].strip('\n'),int(content[i+1].split(':')[1].strip('\n'))])
             i=i+2
