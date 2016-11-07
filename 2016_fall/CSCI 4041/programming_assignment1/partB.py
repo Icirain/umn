@@ -57,11 +57,12 @@ class Huffman(object):
 
 
 class HuffmanNode(object):
-    def __init__(self,item,weight,left=None,right=None):
+    def __init__(self,item,weight,left=None,right=None,height=0):
         self.item=item
         self.weight=weight
         self.left=left
         self.right=right
+        self.height=height
 Huffmancode=Huffman('char_info.txt')
 Huffmancode.create_tree()
 Huffmancode.search_key('f','',Huffmancode.NodeList[0])

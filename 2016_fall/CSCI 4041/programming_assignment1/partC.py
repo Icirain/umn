@@ -1,4 +1,4 @@
-class kmp_matching(object):
+class kmp(object):
     W = ''
     pattern = ''
     def __init__(self, filename):
@@ -11,7 +11,7 @@ class kmp_matching(object):
         print(self.W,self.pattern)
     def make_next(self,pattern):
         next=list()
-        next.appen('!')
+        next.append('!')
         next.append(0)
         k=0
         for i in range(2,len(pattern)):
@@ -22,15 +22,18 @@ class kmp_matching(object):
             next.append(k)
         return next
     def kmp_matching(self):
-        next=make_next(self.pattern)
+        next=self.make_next(self.pattern)
         k=0
         length=len(self.pattern)-1
         for i in range(1,len(self.W)):
             while k>0 and self.W[i]!=self.pattern[k+1]:
                 k=next[k]
-            if self.pattern[k+1]==self.pattern[i]:
+            if self.pattern[k+1]==self.W[i]:
                 k=k+1
             if k==length:
-                print('START = '+(i-lenght+1))        
-
-test=kmp_matching('string_info.txt')
+                position=i-length+1
+                print('START = ')
+                print(position)
+                return
+test=kmp('string_info.txt')
+test.kmp_matching()
