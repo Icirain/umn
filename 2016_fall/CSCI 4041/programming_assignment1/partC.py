@@ -8,7 +8,6 @@ class kmp(object):
         file =  open(self.filename)
         self.W ='!'+file.readline().rstrip('\n')
         self.pattern ='!'+ file.readline().rstrip('\n')
-        print(self.W,self.pattern)
     def make_next(self,pattern):
         next=list()
         next.append('!')
@@ -32,8 +31,7 @@ class kmp(object):
                 k=k+1
             if k==length:
                 position=i-length+1
-                print('START = ')
-                print(position)
+                print 'START = '+str(position)
                 return
 test=kmp('string_info.txt')
 test.kmp_matching()

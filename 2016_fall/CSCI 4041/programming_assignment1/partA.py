@@ -9,8 +9,9 @@ class banker(object):
         file.close()
         i=0
         queue=list()
-        while i<len(content)-1:
-            queue.append([content[i].split(':')[1].strip('\n'),int(content[i+1].strip('priority:\n'))])
+        print(len(content))
+        while i<len(content):
+            queue.append([content[i].split(':')[1].strip('\n'),int(content[i+1].split(':')[1].strip('\n'))])
             i=i+2
         self.queue=queue
         self.make_heap(len(self.queue))
@@ -30,8 +31,9 @@ class banker(object):
         if largest!=index:
             self.queue[largest],self.queue[index]=self.queue[index],self.queue[largest]
             self.Heapify(largest,size)
-    def HeapSort(self):
+    def print_list(self):
         queue=self.queue
+        print('List of Customers According to their Priority:')
         while self.queue!=[]:
             self.Extract_Max()
         self.queue=queue
@@ -45,5 +47,4 @@ class banker(object):
         self.queue.append(element)
         self.make_heap(len(self.queue))
 banker1=banker('customers_info.txt')
-banker1.Insert(['Alan',17])
-banker1.HeapSort()
+banker1.print_list()

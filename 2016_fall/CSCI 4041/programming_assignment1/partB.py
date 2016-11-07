@@ -16,7 +16,7 @@ class Huffman(object):
                 stat[str[i]]+=1
             else:
                 stat[str[i]]=1
-        print(stat)
+        #print(stat)
         self.stat=stat
         for i ,j in stat.iteritems():
             self.data.append([i,j])
@@ -41,6 +41,7 @@ class Huffman(object):
             height+=1
         self.NodeList[0].item=str(self.NodeList[0].weight)
     def print_tree(self):
+        print('Huffman  Tree')
         track_depth=self.NodeList[0].depth
         queue=list()
         queue.append(self.NodeList[0])
@@ -54,7 +55,7 @@ class Huffman(object):
                 queue.append(temp.left)
             if temp.right != None:
                 queue.append(temp.right)
-    def level_order(self):
+    '''def level_order(self):
         queue=list()
         queue.append(self.NodeList[0])
         #print('asdjlkj' self.NodeList[0].left.item)
@@ -64,14 +65,13 @@ class Huffman(object):
             if temp.left!= None:
                 queue.append(temp.left)
             if temp.right!=None:
-                queue.append(temp.right)
+                queue.append(temp.right)   '''
     def depth_deter(self):
         queue=list()
         queue.append(self.NodeList[0])
         self.NodeList[0].depth=0
         while len(queue)!=0 :
             temp=queue.pop(0)
-            print(temp.item,temp.weight,temp.depth)
             if temp.left!= None:
                 self.change_depth(temp.left,temp.depth+1)
                 queue.append(temp.left)
@@ -83,10 +83,13 @@ class Huffman(object):
     def search_key(self,item,str,node):
         if node!=None:
             if node.item==item:
-                print(str)
+                print node.item+':'+str
             else:
                 self.search_key(item,str+'0',node.left)
                 self.search_key(item,str+'1',node.right)
+    def print_code(self):
+        for i in self.stat:
+            self.search_key(i,'',self.NodeList[0])
     def insertionSort(self):
         for i in range(1,len(self.NodeList)):
             key=self.NodeList[i]
@@ -109,5 +112,7 @@ class HuffmanNode(object):
 Huffmancode=Huffman('char_info.txt')
 Huffmancode.create_tree()
 Huffmancode.depth_deter()
+Huffmancode.print_code()
 Huffmancode.print_tree()
+
 #Huffmancode.search_key('f','',Huffmancode.NodeList[0])

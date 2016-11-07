@@ -1,21 +1,4 @@
-customer:alan
-priority:4
-customer:bill
-priority:15
-customer:Mark
-priority:8
-customer:Kevin
-priority:2
-customer:Lucy
-priority:11
-customer:BIdas
-priority:6
-customer:Henry
-priority:5
-customer:Austin
-priority:14
-customer:Buffer
-priority:1
-customer:Luna
-priority:9
-
+Customer 1: Alan Smith
+Customer 1 Priority: 5
+Customer 2: Paul Sims
+Customer 2 Priority: 2
