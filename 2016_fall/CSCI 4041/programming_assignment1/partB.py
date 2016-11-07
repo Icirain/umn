@@ -26,10 +26,13 @@ class Huffman(object):
             self.NodeList.append(new_node)
         self.insertionSort()
     def create_tree(self):
+        height=0
         self.make_node()
         while(len(self.NodeList)!=1):
             temp1=self.NodeList.pop(0)
             temp2=self.NodeList.pop(0)
+            temp1.height=height
+            temp2.height=height
             if temp1.item not in self.stat:
                 temp1.item='0'
             if temp2.item not in self.stat:
@@ -37,6 +40,48 @@ class Huffman(object):
             new_node=HuffmanNode('0',temp1.weight+temp2.weight,temp1,temp2)
             self.NodeList.append(new_node)
             self.insertionSort()
+            height+=1
+        self.NodeList[0].height=height
+    '''
+    def print_tree(self):
+        track_height=self.NodeList[0].height
+        queue=list()
+        queue.append(self.NodeList[0])
+        print(self.NodeList[0].weight,self.NodeList[0].height)
+        while len(queue)!=0:
+            print('     ')
+            temp=queue.pop()
+            if temp.left != None:
+                queue.append(temp.left)
+            if temp.right != None:
+                queue.append(temp.right)
+            if temp.height != track_height:
+                print('\n')
+                print(temp.weight,temp.height)
+    '''
+    def level_order(self):
+        queue=list()
+        queue.append(self.NodeList[0])
+        print(self.NodeList[0].left.item)
+        while len(queue)!=0 :
+            temp=queue.pop(0)
+            print(temp.item,temp.weight)
+            if temp.left!= None:
+                queue.append(temp.left)
+            if temp.right!=None:
+                queue.append(temp.right)
+    def depth_deter(self):
+        queue=list()
+        queue.append(self.NodeList[0])
+        print(self.NodeList[0].left.item)
+        while len(queue)!=0 :
+            temp=queue.pop(0)
+            print(temp.item,temp.weight)
+            if temp.left!= None:
+                queue.append(temp.left)
+            if temp.right!=None:
+                queue.append(temp.right)
+
     def search_key(self,item,str,node):
         if node!=None:
             if node.item==item:
@@ -65,4 +110,5 @@ class HuffmanNode(object):
         self.height=height
 Huffmancode=Huffman('char_info.txt')
 Huffmancode.create_tree()
-Huffmancode.search_key('f','',Huffmancode.NodeList[0])
+Huffmancode.level_order()
+#Huffmancode.search_key('f','',Huffmancode.NodeList[0])
