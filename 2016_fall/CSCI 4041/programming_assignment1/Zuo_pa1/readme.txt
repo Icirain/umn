@@ -1,0 +1,1 @@
+These three programs could be ran in the terminal. And as one of them runs, the required output will be printed out. And for the partA, the process of reading file may occur some problems beacuse the amount of lines seems to be inaccurate.

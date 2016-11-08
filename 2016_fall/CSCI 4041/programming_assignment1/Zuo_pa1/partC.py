@@ -4,11 +4,11 @@ class kmp(object):
     def __init__(self, filename):
         self.filename=filename
         self.read_file()
-    def read_file(self):
+    def read_file(self):    #read the input file and construct pattern string and matching string
         file =  open(self.filename)
         self.W ='!'+file.readline().rstrip('\n')
         self.pattern ='!'+ file.readline().rstrip('\n')
-    def make_next(self,pattern):
+    def make_next(self,pattern):    #function to make the next table
         next=list()
         next.append('!')
         next.append(0)
@@ -20,7 +20,7 @@ class kmp(object):
                 k+=1
             next.append(k)
         return next
-    def kmp_matching(self):
+    def kmp_matching(self):  # function which implements the kmp matching process
         next=self.make_next(self.pattern)
         k=0
         length=len(self.pattern)-1

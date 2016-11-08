@@ -5,7 +5,7 @@ class Huffman(object):
     def __init__(self,filename):
         self.filename=filename
         self.read_file()
-    def read_file(self):
+    def read_file(self):  #function which read the input file and count the frequency of each appeared character
         str=''
         stat={}
         file=open(self.filename)
@@ -20,12 +20,12 @@ class Huffman(object):
         self.stat=stat
         for i ,j in stat.iteritems():
             self.data.append([i,j])
-    def make_node(self):
+    def make_node(self):        #function used to construct node for each character. The node instance contains all their information  All the node will be stored into node
         for i in range(len(self.data)):
             new_node=HuffmanNode(self.data[i][0],self.data[i][1])
             self.NodeList.append(new_node)
         self.insertionSort()
-    def create_tree(self):
+    def create_tree(self):   # Towards nodelist. the huffman tree will be constructed by implementing this function
         height=0
         self.make_node()
         while(len(self.NodeList)!=1):
@@ -40,7 +40,7 @@ class Huffman(object):
             self.insertionSort()
             height+=1
         self.NodeList[0].item=str(self.NodeList[0].weight)
-    def print_tree(self):
+    def print_tree(self):     #function which is implemented to print out the structure of the huffman tree
         print('Huffman  Tree')
         track_depth=self.NodeList[0].depth
         queue=list()
@@ -66,7 +66,7 @@ class Huffman(object):
                 queue.append(temp.left)
             if temp.right!=None:
                 queue.append(temp.right)   '''
-    def depth_deter(self):
+    def depth_deter(self):         #By level_order transversal, the depth of each node of the nodelist will be determined by this function
         queue=list()
         queue.append(self.NodeList[0])
         self.NodeList[0].depth=0
@@ -78,7 +78,7 @@ class Huffman(object):
             if temp.right!=None:
                 self.change_depth(temp.right,temp.depth+1)
                 queue.append(temp.right)
-    def change_depth(self,node,depth):
+    def change_depth(self,node,depth):    #function which is used to change the depth of the node
         node.depth=depth
     def search_key(self,item,str,node):
         if node!=None:
@@ -102,7 +102,7 @@ class Huffman(object):
 
 
 
-class HuffmanNode(object):
+class HuffmanNode(object):  #HuffmanNode class 
     def __init__(self,item,weight,left=None,right=None,depth=0):
         self.item=item
         self.weight=weight
