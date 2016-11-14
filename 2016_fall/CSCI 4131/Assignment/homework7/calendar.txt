@@ -1,5 +1,0 @@
-{"Weekday":"Mon","Start":"00:59","End":"12:00","Event":"ads","Location":"fraser","img":"fraser_hall.jpg"}
-{"Weekday":"Mon","Start":"01:00","End":"12:59","Event":"dsa","Location":"bruininks","img":"bruininks_hall.jpg"}
-{"Weekday":"Wed","Start":"12:59","End":"01:00","Event":"Geo","Location":"hanson","img":"hanson_hall.jpg"}
-{"Weekday":"Thu","Start":"08:59","End":"10:00","Event":"Phy","Location":"willey","img":"willey_hall.jpg"}
-{"Weekday":"Fri","Start":"00:00","End":"13:00","Event":"document","Location":"blegen","img":"blegen_hall"}

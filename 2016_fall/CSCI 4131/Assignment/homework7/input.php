@@ -80,9 +80,14 @@
       {
         $Weekday = $_POST["Weekday"];
       }
-      if (array_key_exists($Location,$src))
+      if (empty($_POST['img']))
       {
-        $img = $src[$Location];
+        $imgerr = 'URL is requested';
+        $Condition = 0;
+      }
+      else
+      {
+        $img = $_POST['img'];
       }
       if($Condition == 1 && $_POST["submit"] =="submit")
       {
@@ -134,6 +139,12 @@
      <input type="text" name="Location">
      <span class="error">
      <?php echo $Locationerr ; ?>  
+     </span>
+     <br>
+     URL: &nbsp;&nbsp;&nbsp;
+     <input type="text" name="img">
+     <span class="error">
+     <?php echo $imgerr ; ?>  
      </span>
      <br>
 
