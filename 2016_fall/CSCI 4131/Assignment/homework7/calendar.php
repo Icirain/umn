@@ -1,52 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
  <link rel="stylesheet" type="text/css" href="scheduleStyle.css">
  <title>Rui's Calendar</title>
  <meta charset="UTF-8">
- <script type="text/javascript">
-  var content=[
-  "9:00-9:50 AM PHY 1302 Willey Hall   5:45-6:30 PM CSCI 4041 Akerman Hall",
-    "9:00-9:50 AM PHY 1302 Willey Hall   1:00-2:15 PM CSCI 4707 Fraser Hall   2:30-3:45 PM CSCI 4131 Bruininks Hall",
-    "9:00-9:50 AMPHY 1302 Blegen Hall",
-    "9:00-9:50 AM PHY 1302 Blegen Hall   1:00-2:15 PM CSCI 4707 Fraser Hall   2:30-3:45 PM CSCI 4131 Bruininks Hall",
-    "9:00-9:50 AM PHY 1302 Willey Hall   10:00-10:50 GEO 1502 Hanson Hall",
-    "Have a Good break",
-    "Have a Godd break"
-  ]
 
-   function GetName(name) {
-return document.getElementsByClassName(name);             
-}
-function Replace(url)
-  {
-    window.location.replace(url);
-    return;
-  }
-function Rolling(Div,Lp,Rp)        
-{
-    var clock, width = Lp.offsetWidth;
-    test();
-    function roll() {
-        if (Div.scrollLeft >= width)          
-        Div.scrollLeft = 0;
-        else
-        Div.scrollLeft ++;                     
-    }
-    Rp.innerHTML = Lp.innerHTML;           
-    Div.style.overflow = "hidden";           
-    Rp.style.width = Lp.offsetWidth;        
-    clock= window.setInterval(roll, 12);     
-}
-      function test(){
-        var d=new Date();
-        var n=d.getDay();
-      	document.getElementsByClassName("Event")[0].innerHTML=content[1];
-      }
-window.onload = function () {
-new Rolling(GetName("Div")[0],GetName("Lp")[0],GetName("Rp")[0]);
-}
- </script>
  <style type="text/css">
       html, body { height: 100%; margin: 0; padding: 0; }
       div.map{ height: 100%;
@@ -58,102 +16,103 @@ new Rolling(GetName("Div")[0],GetName("Lp")[0],GetName("Rp")[0]);
 </head>
  <body>
   <h1>Rui's Calendar</h1>
-  <div class="Div">
-    <table>
-      <tbody>
-      <tr>
-        <td class="Lp">
-          <p class="Event">
-        flkjdsajfdslkjdsalk
-          </p>
-        </td>
-        <td class="Rp">
-          
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+
    <nav>
-     <button onclick="{location.href='assignment3.html'}">My Calendar</button>
-     <button onclick="{location.href='form.html'}">Form Input</button>
+     <button onclick="{location.href='calendar.php'}">My Calendar</button>
+     <button onclick="{location.href='input.php'}">Form Input</button>
    </nav>
-  <div class="other">
-  <table>
-   <tr class="down">
-     <th><p><span>Monday</span></p></th>
-     <td>
-      <p><span>9:00-9:50 AM</span><br>PHY 1302 Willey Hall</p>
-      <img class='img_hidden' src="willey_hall.jpg" alt="photo">	
-     </td>
-     <td>
-      <p><span>11:00-12:00 AM</span><br>  -	</p>
-     </td>
-     <td>
-     <p><span>5:45-6:30 PM</span><br>CSCI 4041 Akerman Hall</p>
-     <img class='img_hidden' src="akerman_hall.jpg" alt="photo">
-     </td>
-   </tr>
-   <tr class="up">
-     <th><p><span>Tuesday</span></p></th>
-     <td>
-      <p><span class=time>9:00-9:50 AM</span><br>PHY 1302 <a href="http://campusmaps.umn.edu/willey-hall"></a>Willey Hall</p>
-      <img class='img_hidden' src="willey_hall.jpg" alt="photo">
-     </td>
-     <td>
-      <p><span>1:00-2:15 PM</span><br>CSCI 4707 Fraser Hall</p>
-      <img class='img_hidden' src="fraser_hall.jpg" alt="photo">
-     </td>
-     <td>
-     <p><span>2:30-3:45 PM</span><br>CSCI 4131 Bruininks Hall</p>
-     <img class='img_hidden' src="bruininks_hall.jpg" alt="photo">
-     </td>
-   </tr>
-   <tr class="down">
-     
-      <th><p><span>Wednesday</span></p></th>
-    
-     <td>
-      <p><span>9:00-9:50 AM</span><br>PHY 1302 <a class="myLink" href="http://campusmaps.umn.edu/blegen-hall" >Blegen Hall</a></p>
-      <img class='img_hidden' src="blegen_hall.jpg" alt="photo">	
-     </td>
-     <td>
-      <p><span>1:00-2:15 PM</span><br>-</p>
-     </td>
-     <td>
-     <p><span>2:30-3:45 PM</span><br>-</p>
-     </td>
-   </tr>
-   <tr class="up">
-     <th><p><span>Thursday</span></p></th>
-     <td>
-      <p><span>9:00-9:50 AM</span><br>PHY 1302 Blegen Hall</p>
-      <img class='img_hidden' src="blegen_hall.jpg" alt="photo">	
-     </td>
-     <td>
-      <p><span>1:00-2:15 PM</span><br>CSCI 4707 <a class="myLink" href="http://campusmaps.umn.edu/fraser-hall">Fraser Hall</a></p>
-      <img class='img_hidden' src="fraser_hall.jpg" alt="photo">
-     </td>
-     <td>
-     <p><span>2:30-3:45 PM</span><br>CSCI 4131 Bruininks Hall</p>
-     <img class='img_hidden' src="bruininks_hall.jpg" alt="photo">
-     </td>
-   </tr>
-   <tr class="down">
-     <th><p><span>Friday</span></p></th>
-     <td>
-      <p><span>9:00-9:50 AM</span><br>PHY 1302 Willey Hall</p>
-      <img class='img_hidden' src="willey_hall.jpg" alt="photo">	
-     </td>
-     <td>
-      <p><span>10:00-10:50</span><br>GEO 1502 Hanson Hall</p>
-      <img class='img_hidden' src="hanson_hall.jpg" alt="photo">
-     </td>
-     <td>
-     <p><span>2:30-3:45 PM</span><br>-</p>
-     </td>
-   </tr>
-  </table>
+  <div class="calendar">
+    <?php
+    $event_list = array(
+      "Mon" => array(),
+      "Tue" => array(),
+      "Wed" => array(),
+      "Thu" => array(),
+      "Fri" => array()
+      );
+    $empty = 1;
+    $myfile = fopen ("calendar.txt","r");
+    $all = fread($myfile, filesize("calendar.txt"));
+    fclose($myfile);
+    $event = explode("\n", $all);
+    if ($event[count($event)-1] == "")
+     {
+      unset($event[count($event)-1]);
+     }
+    if(count($event) == 0)
+    {
+      $empty = 0;
+    }
+    foreach ($event as $key) 
+     {
+      $element= json_decode($key,true);
+      array_push($event_list[$element["Weekday"]], $element);
+     }
+     function cmp ($a,$b)
+     {
+      if ($a[Start]>$b[Start])
+      {
+        return 1;
+      }
+      else if ($a[Start]<$b[Start])
+      {
+        return -1;
+      }
+      else
+      {
+        return 0;
+      }  
+     }
+     foreach ($event_list as $key => $value) 
+     {
+       usort($event_list[$key], 'cmp');
+     }
+     if ($empty != 0)
+     {        
+             echo "<table>";
+             
+             foreach ($event_list as $day_event) 
+             {
+               if (count($day_event) != 0)
+               {
+                echo "<tr>";
+                echo "<th>";
+                echo $day_event[0]["Weekday"];
+                echo "</th>";
+                foreach ($day_event as $single_event ) 
+                {
+                   echo "<td>";
+                   echo "<span>";
+                   echo $single_event["Event"];
+                   echo "</span>";
+                   echo "<br>";
+                   echo "<span>";
+                   echo $single_event["Start"];
+                   echo "</span>";
+                   echo "<br>";
+                   echo "<span>";
+                   echo $single_event["End"];
+                   echo "</span>";
+                   echo "<br>";
+                   echo "<span class='location'>";
+                   echo $single_event["Location"];
+                   echo "</span>";
+                   echo "<br>";
+                   echo "<img  class='hidden_img' src='Error-404.png' alt='photo'>";
+                   echo "</td>";
+                }
+
+               }  
+             }
+             echo "</table>";
+      }
+      else 
+      {
+        echo "<span>";
+        echo "No events in the Calendar";
+        echo "</span>";
+      }
+     ?>
   </div>
   <div class="mapSearch">
     <input type="text" value="Keller Hall,MN" class="address">
@@ -169,20 +128,53 @@ new Rolling(GetName("Div")[0],GetName("Lp")[0],GetName("Rp")[0]);
                  {lat:44.9739602,lng:-93.2330897},//amundson
                  {lat:44.9740787,lng:-93.23738839999999},//bruinks
                  {lat:44.9755702,lng:-93.2373867}//fraser_hall               
-                ]
-    var initContent=['CSCI 4041 in Akerman Hall','CSCI 4041 Dis in Amundson Hall','CSCI 4131 in Bruininks Hall','CSCI 4707 in Fraser Hall']
+                ];
+    var bound = {
+                  west: -93.244254,
+                  east: -93.223162,
+                  south:44.971960 ,
+                  north:44.971961
+                 };
+    var initContent=['CSCI 4041 in Akerman Hall','CSCI 4041 Dis in Amundson Hall','CSCI 4131 in Bruininks Hall','CSCI 4707 in Fraser Hall'];
     var test1=[{lat:44.9739602,lng:-93.2330897}];
     var map;
     var loc;
     var publicWin;
+    function search_img(temp)
+    {
+      var index = 0;
+      var img_set = document.getElementsByClassName('hidden_img');
+      for (var i = 0; i<img_set.length; i++) 
+      {
+        if(temp == img_set[i])
+        {
+          index = i;
+        }
+      }
+      temp.style.opacity=1;
+      destination = document.getElementsByClassName('location')[index];
+      var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+               if(this.responseText != '')
+              {
+               document.getElementsByClassName('hidden_img')[index].src = this.responseText;
+              }
+            }
+        };
+        xmlhttp.open("GET", "get_img.php?q=" + destination.innerHTML, true);
+        xmlhttp.send();
+      
+
+    }
     function img_SetListener()
     {
-      var img=document.getElementsByClassName('img_hidden');
+      var img=document.getElementsByClassName('hidden_img');
       var len=img.length;
       for (var i = 0; i < len; i++) {
         var temp=img[i];
         temp.addEventListener('mouseover',function(){
-        this.style.opacity=1;
+        search_img(this);
         });
       }
       for (var i = 0; i < len; i++) {
@@ -204,7 +196,8 @@ new Rolling(GetName("Div")[0],GetName("Lp")[0],GetName("Rp")[0]);
      zoom: 16
      });
     var marker=new Array();
-    initMarker();
+    var geocoder = new google.maps.Geocoder();
+    init_Marker(geocoder,map);
       
     var infowindow = new google.maps.InfoWindow({
      content: 'Amundson Hall'
@@ -212,7 +205,6 @@ new Rolling(GetName("Div")[0],GetName("Lp")[0],GetName("Rp")[0]);
     publicWin= new google.maps.InfoWindow({
      content: 'default'
      });
-    var geocoder = new google.maps.Geocoder();
     document.getElementsByClassName('search')[0].addEventListener('click', function() {
      geocodeAddress(geocoder, map);
      //GetName('address')[0].value=loc.lat();
@@ -281,8 +273,8 @@ new Rolling(GetName("Div")[0],GetName("Lp")[0],GetName("Rp")[0]);
       }
      }
     function geocodeAddress(geocoder, resultsMap) {
-     var address = document.getElementsByClassName('address')[0].value;
-     geocoder.geocode({'address': address}, function(results, status) {
+     var address = document.getElementsByClassName('address')[0].value + ',Minneapolis';
+     geocoder.geocode({'address': address,bounds : bound}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
        resultsMap.setCenter(results[0].geometry.location);
        var marker = new google.maps.Marker({
@@ -300,6 +292,32 @@ new Rolling(GetName("Div")[0],GetName("Lp")[0],GetName("Rp")[0]);
       alert('Geocode was not successful for the following reason: ' + status);
       }
      });
+    }
+    function init_Marker(geocoder, resultsMap) {
+         
+         var location = document.getElementsByClassName('location');
+         for (var i = 0; i<location.length; i++) 
+         {
+             var address = location[i].innerHTML+ ',Minneapolis';
+             geocoder.geocode({'address': address,bounds : bound}, function(results, status) {
+              if (status === google.maps.GeocoderStatus.OK) {
+               resultsMap.setCenter(results[0].geometry.location);
+               var marker = new google.maps.Marker({
+                                                    map: resultsMap,
+                                                    position: results[0].geometry.location,
+                                                    title:results[0].formatted_address
+                                                  });
+               
+               marker.addListener('click', function(){
+                publicWin.setContent(results[0].formatted_address);
+                publicWin.open(map,marker);
+               });
+               loc=results[0].geometry.location;
+              } else {
+              alert('Geocode was not successful for the following reason: ' + status);
+              }
+             });
+        }
     }
   </script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDP7pA-7IosVJE6hnZ2yME6vdCsjRNTh2M&callback=initMap&libraries=places" >

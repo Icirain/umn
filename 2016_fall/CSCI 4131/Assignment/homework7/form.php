@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Form Input</title>
-	<link rel="stylesheet" type="text/css" href="Style.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta charset="UTF-8">
 </head>
 <body>
@@ -22,32 +22,135 @@
    <td><img alt="bullet" src="bullet_gray.png" class="bullet"></td>
    </tr>
  </table>
- 
+ <?php
+    $src = array("bruininks" => "bruininks_hall.jpg", "fraser" => "fraser_hall.jpg" , "willey" => "willey_hall.jpg" , "hanson" => "hanson_hall.jpg", "blegen" => "blegen_hall");
+    $img = $Event=$Start=$End=$Location=$Weekday="";
+    $Condition = 1;
+
+    if($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+      if ($_POST["clear"]=="clear")
+      {
+        $myfile = fopen("calendar.txt","w");
+        fclose($myfile);
+        header("Location:calendar.php");
+      }
+      if (empty($_POST["Event"]))
+      {
+        $Eventerr = "Event name is requested";
+        $Condition = 0;
+      }
+      else
+      {
+        $Event=$_POST["Event"];
+      }
+      if (empty($_POST["Start"]))
+      {
+        $Starterr = "Start time is requested";
+        $Condition = 0;
+      }
+      else
+      {
+        $Start = $_POST["Start"];
+      } 
+      if (empty($_POST["End"]))
+      {
+        $Enderr = "Ending name is requested";
+        $Condition = 0;
+      }
+      else
+      {
+        $End = $_POST["End"];
+      }
+      if (empty($_POST["Location"]))
+      {
+        $Locationerr = "Location is requested";
+        $Condition = 0;
+      }
+      else
+      {
+        $Location=$_POST["Location"];
+      }
+      if (empty($_POST["Weekday"]))
+      {
+        $Eventerr = "Weekday is requested";
+        $Condition = 0;
+      }
+      else
+      {
+        $Weekday = $_POST["Weekday"];
+      }
+      if (array_key_exists($Location,$src))
+      {
+        $img = $src[$Location];
+      }
+      if($Condition == 1 && $_POST["submit"] =="submit")
+      {
+        $myfile=fopen("calendar.txt", a);
+        $data=array(
+                    "Weekday" =>$Weekday,
+                    "Start" => $Start,
+                    "End" => $End,
+                    "Event" => $Event,
+                    "Location" => $Location,
+                    "img" => $img
+                   );
+        fwrite($myfile,json_encode($data));
+        fwrite($myfile,"\n");
+        fclose($myfile);
+        header("Location:calendar.php");
+      }
+    } 
+  ?>
  <H1 class="printer">Form Input</H1>
  <nav>
- 	<button onclick="{location.href='assignment3.html'}">My Calendar</button>
-  <button onclick="{location.href='form.html'}">Form Input</button>
+ 	<button onclick="{location.href='calendar.php'}">My Calendar</button>
+  <button onclick="{location.href='input.php'}">Form Input</button>
  </nav>
  <div class="other">
- 	<form action="http://www-users.cselabs.umn.edu/~sharm398/index.php" method="GET">
- 	 Event Name: &nbsp;&nbsp;
- 	 <input type="text" name="Text"><br>
- 	 Start Time: &nbsp;&nbsp;
- 	 <input type="time" name="Start"><br>
- 	 Ending Time: &nbsp;&nbsp;
- 	 <input type="time" name="End"><br>
+ 	<form action = <?php echo $_SERVER["PHP_SELF"]; ?> method="post">
+   	 Event Name: &nbsp;&nbsp;
+   	 <input type="text" name="Event">
+     <span class="error">
+     <?php echo $Eventerr ; ?>  
+     </span>
+     <br>
+
+   	 Start Time: &nbsp;&nbsp;
+   	 <input type="time" name="Start">
+     <span class="error">
+     <?php echo $Starterr ; ?>  
+     </span>
+     <br>
+
+   	 Ending Time: &nbsp;&nbsp;
+   	 <input type="time" name="End">
+     <span class="error">
+     <?php echo $Enderr ; ?>  
+     </span>
+     <br>
+
      Location: &nbsp;&nbsp;&nbsp;
-     <input type="text" name="Location"><br>
+     <input type="text" name="Location">
+     <span class="error">
+     <?php echo $Locationerr ; ?>  
+     </span>
+     <br>
+
      Day of the week:&nbsp;&nbsp;&nbsp;
-      <select>
+      <select name="Weekday">
       <option>Mon</option>
       <option>Tue</option>
       <option>Wed</option>
       <option>Thu</option>
       <option>Fri</option>
-      </select><br>
+      </select>
+      <?php echo $_POST["submit"]; echo $Condition; ?>
+      <br>
+
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="submit" value="Submit">
+      <button name="clear" type="submit" value="clear">clear</button>
+      <button name="submit" type="submit" value="submit">submit</button>
  	</form>
  </div>
  <script type="text/javascript">

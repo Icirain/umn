@@ -40,10 +40,11 @@ table,td{
 table{
   width: 100%;
 }
-img.img_hidden{
+
+.hidden_img{
   opacity: 0;
-  width: 100%;
-  height: 40%;
+  width: 60%;
+  height: 60%;
 }
   .time{
     font-style: italic;
