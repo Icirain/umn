@@ -1,0 +1,1 @@
+{"Weekday":"Wed","Start":"01:00","End":"13:00","Event":"ga","Location":"blegen hall","img":"blegen_hall.jpg"}

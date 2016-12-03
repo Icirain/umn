@@ -14,7 +14,7 @@ class Prim_execution(object):
         for x in range(len(data)):
             temp = data[x].split()
             for y in range(len(temp)):
-                temp[y] = int(temp[y])
+                temp[y] = int(temp[y]
             self.martrix.append(temp)
     def make_vertices(self):
         for i in range(len(self.martrix)):
@@ -37,7 +37,9 @@ class Prim_execution(object):
                     target.pi = u.index
     def print_MST(self):
         MST = copy.deepcopy(self.martrix)
-        print MST
+        print self.vertices
+        a = copy.deepcopy(self.vertices)
+        print a
         for i in range(len(MST)):
             for j in range(len(MST[i])):
                 MST[i][j] = 0
